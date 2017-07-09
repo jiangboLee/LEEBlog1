@@ -12,17 +12,24 @@ def index(request):
 
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.body = markdown.markdown(post.body, extensions = [
+    # post.body = markdown.markdown(post.body, extensions = [
+    #     'markdown.extensions.extra',
+    #     'markdown.extensions.codehilite',
+    #     'markdown.extensions.toc',
+    # ])
+    md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
         'markdown.extensions.toc',
     ])
+    post.body = md.convert(post.body)
     form = CommentForm()
     comment_list = post.comment_set.all()
     context = {
         'post': post,
         'form': form,
         'comment_list': comment_list,
+        'toc': md.toc,
     }
     return render(request, 'blog/detail.html', context=context)
 
