@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Category
 import markdown
 from comments.forms import CommentForm
+from markdown.extensions.toc import TocExtension
+from django.utils.text import slugify
 
 # Create your views here.
 def index(request):
@@ -12,15 +14,10 @@ def index(request):
 
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    # post.body = markdown.markdown(post.body, extensions = [
-    #     'markdown.extensions.extra',
-    #     'markdown.extensions.codehilite',
-    #     'markdown.extensions.toc',
-    # ])
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
-        'markdown.extensions.toc',
+        TocExtension(slugify=slugify)
     ])
     post.body = md.convert(post.body)
     form = CommentForm()
