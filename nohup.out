@@ -1,0 +1,26 @@
+[2017-07-08 11:48:14 -0400] [30892] [INFO] Starting gunicorn 19.7.1
+[2017-07-08 11:48:14 -0400] [30892] [INFO] Listening at: http://127.0.0.1:8000 (30892)
+[2017-07-08 11:48:14 -0400] [30892] [INFO] Using worker: gevent
+[2017-07-08 11:48:14 -0400] [30895] [INFO] Booting worker with pid: 30895
+[2017-07-08 11:48:14 -0400] [30895] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/workers/ggevent.py", line 190, in init_process
+    super(GeventWorker, self).init_process()
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ljb/sites/172.93.38.194/env/lib/python3.4/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+ImportError: No module named 'NSLoger'
+[2017-07-08 11:48:14 -0400] [30895] [INFO] Worker exiting (pid: 30895)
+[2017-07-08 11:48:14 -0400] [30892] [INFO] Shutting down: Master
+[2017-07-08 11:48:14 -0400] [30892] [INFO] Reason: Worker failed to boot.
