@@ -7,26 +7,26 @@ from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
-# def index(request):
-#     post_list = Post.objects.all().order_by('-created_time')
-#     paginator = Paginator(post_list, 10)
-#     page = request.GET.get('page')
-#
-#     try:
-#         post_list = paginator.page(page)
-#     except PageNotAnInteger:
-#         post_list = paginator.page(1)
-#     except EmptyPage:
-#         post_list = paginator.page(paginator.num_pages)
-#     return render(request, 'blog/index.html', context={
-#         'post_list': post_list,
-#     })
+def index(request):
+    post_list = Post.objects.all().order_by('-created_time')
+    paginator = Paginator(post_list, 10)
+    page = request.GET.get('page')
 
-class IndexView(ListView):
-    model = Post
-    template_name = 'blog/index.html'
-    context_object_name = 'post_list'
-    paginate_by = 10
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.page(paginator.num_pages)
+    return render(request, 'blog/index.html', context={
+        'post_list': post_list,
+    })
+
+# class IndexView(ListView):
+#     model = Post
+#     template_name = 'blog/index.html'
+#     context_object_name = 'post_list'
+#     paginate_by = 10
 
 
 
