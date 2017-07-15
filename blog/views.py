@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Category
+from .models import Post, Category, Tag
 import markdown
 from comments.forms import CommentForm
 from markdown.extensions.toc import TocExtension
@@ -122,6 +122,13 @@ def category(request, pk):
     post_list = Post.objects.filter(category=cate).order_by('-created_time')
     return render(request, 'blog/index.html', context={
         'post_list': post_list,
+    })
+
+def tag(request, pk):
+    cate = get_object_or_404(Tag, pk=pk)
+    post_list = Post.objects.filter(tags=cate).order_by('-created_time')
+    return render(request, 'blog/index.html', context={
+            'post_list': post_list,
     })
 
 def search(request):
