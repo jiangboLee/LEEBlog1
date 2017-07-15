@@ -32,9 +32,8 @@
 </head>
 
 <body>
-<script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 <div class="container">
-    <header id="site-header">
+    <header id="site-header" style="background-color: transparent">
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
@@ -90,7 +89,7 @@
             <aside class="col-md-4">
                 {% block toc %}
                 {% endblock toc %}
-                <div class="widget widget-recent-posts">
+                <div class="widget widget-recent-posts" style="background-color: transparent">
                     <h3 class="widget-title">最新文章</h3>
                     {% get_recent_posts as recent_post_list %}
                     <ul>
@@ -103,7 +102,7 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="widget widget-archives">
+                <div class="widget widget-archives" style="background-color: transparent">
                     <h3 class="widget-title">归档</h3>
                     {% archives as date_list %}
                     <ul>
@@ -117,7 +116,7 @@
                     </ul>
                 </div>
 
-                <div class="widget widget-category">
+                <div class="widget widget-category" style="background-color: transparent">
                     <h3 class="widget-title">分类</h3>
                     {% get_categories as category_list %}
                     <ul>
@@ -133,7 +132,7 @@
                     </ul>
                 </div>
 
-                <div class="widget widget-tag-cloud">
+                <div class="widget widget-tag-cloud" style="background-color: transparent">
                     <h3 class="widget-title">标签云</h3>
                     {% get_tags as tags_list %}
                     <ul>
@@ -177,6 +176,6 @@
 </div>
 
 <script src="{% static 'blog/js/script.js' %}"></script>
-
+<script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
