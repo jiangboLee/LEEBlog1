@@ -36,11 +36,9 @@ class Post(models.Model):
         self.views += 1
         self.save(update_fields=['views'])
     def save(self, *args, **kwargs):
-        self.body = markdown.markdown(self.body,
+        self.excerpt = markdown.markdown(self.body,
                                   extensions=[
                                      'markdown.extensions.extra',
                                      'markdown.extensions.codehilite',
-                                     'markdown.extensions.toc',
-                                  ])
-        self.excerpt = self.body[:54]
+                                  ])[:50]
         super(Post, self).save(*args, **kwargs)
