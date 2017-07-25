@@ -62,12 +62,10 @@
             </ul>
         </div>
     </section>
-{% endblock %}
+{% endblock main%}
 {% block toc %}
     <div class="widget widget-content">
         <h3 class="widget-title">文章目录</h3>
-        <aside>
-            {{ toc|safe }}
-        </aside>
+        {{ post.toc | safe }}
     </div>
-{% endblock %}
+{% endblock toc %}
